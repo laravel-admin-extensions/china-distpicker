@@ -37,20 +37,30 @@ php artisan vendor:publish --tag=laravel-admin-china-distpicker
 ## 使用
 
 比如在表中有三个字段`province_id`, `city_id`, `district_id`, 在form表单中使用它：
+
 ```php
 $form->distpicker(['province_id', 'city_id', 'district_id']);
+```
 
-// 设置placeholder
+可以设置每个字段的placeholder
+
+```php
 $form->distpicker([
     'province_id' => '省',
     'city_id'     => '市',
     'district_id' => '区'
 ]);
+```
 
-// 设置label
+设置label
+
+```php
 $form->distpicker(['province_id', 'city_id', 'district_id'], '请选择区域');
+```
 
-// 设置自动选择, 可以设置1,2,3 表示自动选择到第几级
+设置自动选择, 可以设置1,2,3 表示自动选择到第几级
+
+```php
 $form->distpicker(['province_id', 'city_id', 'district_id'])->autoselect(1);
 
 ```
