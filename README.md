@@ -1,7 +1,7 @@
 Distpicker extension for laravel-admin
 ======
 
-[Distpicker](https://github.com/fengyuanchen/distpicker)是一个中国省市区三级联动选择组件，这个包基于`Distpicker`的`laravel-admin`扩展，用来将`Distpicker`集成进`laravel-admin`的表单中
+[Distpicker](https://github.com/fengyuanchen/distpicker)是一个中国省市区三级联动选择组件，这个包是基于`Distpicker`的`laravel-admin`扩展，用来将`Distpicker`集成进`laravel-admin`的表单中
 
 ## 截图
 
@@ -20,7 +20,7 @@ php artisan vendor:publish --tag=laravel-admin-china-distpicker
 
 ## 配置
 
-在`config/admin.php`文件的`extensions`，加上属于这个扩展的一些配置
+在`config/admin.php`文件的`extensions`配置部分，加上属于这个扩展的配置
 ```php
 
     'extensions' => [
