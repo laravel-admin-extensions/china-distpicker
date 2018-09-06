@@ -16,8 +16,7 @@
         "encore/laravel-admin": ">=1.5.20"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0",
-        "laravel/laravel": "5.*"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "psr-4": {
