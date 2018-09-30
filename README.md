@@ -65,6 +65,10 @@ $form->distpicker(['province_id', 'city_id', 'district_id'])->autoselect(1);
 
 ```
 
+## 地区编码数据
+
+[Distpicker](https://github.com/fengyuanchen/distpicker)所使用的地域编码是基于国家统计局发布的数据, 数据字典可以在https://github.com/eduosi/district 下载到
+
 ## 支持
 
 如果觉得这个项目帮你节约了时间，不妨支持一下;)
