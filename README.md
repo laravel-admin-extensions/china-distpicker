@@ -65,9 +65,14 @@ $form->distpicker(['province_id', 'city_id', 'district_id'])->autoselect(1);
 
 ```
 
+表单提交的时候，默认是使用`地域名称`作为表单值提交，如果你要提交`地域编码`，使用下面的方法：
+```php
+$form->distpicker(['province_id', 'city_id', 'district_id'])->attribute('data-value-type', 'code');
+```
+
 ## 地区编码数据
 
-[Distpicker](https://github.com/fengyuanchen/distpicker)所使用的地域编码是基于国家统计局发布的数据, 数据字典可以在https://github.com/eduosi/district 下载到
+[Distpicker](https://github.com/fengyuanchen/distpicker)所使用的地域编码是基于国家统计局发布的数据, 数据字典为`china_area.sql`文件.
 
 ## 支持
 

@@ -5,7 +5,7 @@
     <div class="{{$viewClass['field']}} form-inline">
 
         @include('admin::form.error')
-        <div id="{{ $id }}" {!! $attributes !!} data-value-type="code">
+        <div id="{{ $id }}" {!! $attributes !!}>
             <select class="form-control" name="{{$name['province']}}"></select>
             <select class="form-control" name="{{$name['city']}}"></select>
             <select class="form-control" name="{{$name['district']}}"></select>
