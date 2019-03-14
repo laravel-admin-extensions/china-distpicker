@@ -4,6 +4,7 @@ namespace Encore\ChinaDistpicker;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Form;
+use Encore\Admin\Grid\Filter;
 use Illuminate\Support\ServiceProvider;
 
 class ChinaDistpickerServiceProvider extends ServiceProvider
@@ -30,6 +31,7 @@ class ChinaDistpickerServiceProvider extends ServiceProvider
 
         Admin::booting(function () {
             Form::extend('distpicker', Distpicker::class);
+            Filter::extend('distpicker', DistpickerFilter::class);
         });
     }
 }
