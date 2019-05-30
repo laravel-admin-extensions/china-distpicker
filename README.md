@@ -36,6 +36,8 @@ php artisan vendor:publish --tag=laravel-admin-china-distpicker
 
 ## 使用
 
+### 表单中使用
+
 比如在表中有三个字段`province_id`, `city_id`, `district_id`, 在form表单中使用它：
 
 ```php
@@ -68,6 +70,12 @@ $form->distpicker(['province_id', 'city_id', 'district_id'])->autoselect(1);
 表单提交的时候，默认是使用`地域名称`作为表单值提交，如果你要提交`地域编码`，使用下面的方法：
 ```php
 $form->distpicker(['province_id', 'city_id', 'district_id'])->attribute('data-value-type', 'code');
+```
+
+### 表格筛选中使用
+
+```php
+$filter->distpicker('province_id', 'city_id', 'district_id', '地域选择');
 ```
 
 ## 地区编码数据
