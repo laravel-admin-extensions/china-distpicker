@@ -4,6 +4,8 @@ namespace Encore\ChinaDistpicker;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Grid\Filter\AbstractFilter;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class DistpickerFilter extends AbstractFilter
 {
@@ -60,9 +62,9 @@ class DistpickerFilter extends AbstractFilter
     public function condition($inputs)
     {
         $value = array_filter([
-            $this->column['province'] => array_get($inputs, $this->column['province']),
-            $this->column['city']     => array_get($inputs, $this->column['city']),
-            $this->column['district'] => array_get($inputs, $this->column['district']),
+            $this->column['province'] => Arr::get($inputs, $this->column['province']),
+            $this->column['city']     => Arr::get($inputs, $this->column['city']),
+            $this->column['district'] => Arr::get($inputs, $this->column['district']),
         ]);
 
         if (!isset($value)) {
@@ -71,7 +73,7 @@ class DistpickerFilter extends AbstractFilter
 
         $this->value = $value;
 
-        if (str_contains(key($value), '.')) {
+        if (Str::contains(key($value), '.')) {
             return $this->buildRelationQuery($value);
         }
 
@@ -86,7 +88,7 @@ class DistpickerFilter extends AbstractFilter
         $data = [];
 
         foreach ($columns as $column => $value) {
-            array_set($data, $column, $value);
+            Arr::set($data, $column, $value);
         }
 
         $relation = key($data);
@@ -117,9 +119,9 @@ class DistpickerFilter extends AbstractFilter
      */
     protected function setupScript()
     {
-        $province = old($this->column['province'], array_get($this->value, $this->column['province']));
-        $city     = old($this->column['city'], array_get($this->value, $this->column['city']));
-        $district = old($this->column['district'], array_get($this->value, $this->column['district']));
+        $province = old($this->column['province'], Arr::get($this->value, $this->column['province']));
+        $city     = old($this->column['city'], Arr::get($this->value, $this->column['city']));
+        $district = old($this->column['district'], Arr::get($this->value, $this->column['district']));
 
         $script = <<<EOT
 $("#{$this->id}").distpicker({

@@ -61,11 +61,13 @@ class Distpicker extends Field
      */
     public function render()
     {
-        $province = old($this->column['province'], array_get($this->value, 'province')) ?: array_get($this->placeholder, 'province');
-        $city     = old($this->column['city'],     array_get($this->value, 'city'))     ?: array_get($this->placeholder, 'city');
-        $district = old($this->column['district'], array_get($this->value, 'district')) ?: array_get($this->placeholder, 'district');
+        $this->attribute('data-value-type', 'code');
 
-        $id = 'distpicker-' . uniqid();
+        $province = old($this->column['province'], Arr::get($this->value(), 'province')) ?: Arr::get($this->placeholder, 'province');
+        $city     = old($this->column['city'],     Arr::get($this->value(), 'city'))     ?: Arr::get($this->placeholder, 'city');
+        $district = old($this->column['district'], Arr::get($this->value(), 'district')) ?: Arr::get($this->placeholder, 'district');
+
+        $id = uniqid('distpicker-');
 
         $this->script = <<<EOT
 $("#{$id}").distpicker({
