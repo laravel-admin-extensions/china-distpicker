@@ -44,6 +44,20 @@ php artisan vendor:publish --tag=laravel-admin-china-distpicker
 $form->distpicker(['province_id', 'city_id', 'district_id']);
 ```
 
+设置默认值
+```php
+
+$form->distpicker([
+    'province_id' => '省份',
+    'city_id' => '市',
+    'district_id' => '区'
+], '地域选择')->default([
+    'province' => 130000,
+    'city'     => 130200,
+    'district' => 130203,
+]);
+```
+
 可以设置每个字段的placeholder
 
 ```php
@@ -65,11 +79,6 @@ $form->distpicker(['province_id', 'city_id', 'district_id'], '请选择区域');
 ```php
 $form->distpicker(['province_id', 'city_id', 'district_id'])->autoselect(1);
 
-```
-
-表单提交的时候，默认是使用`地域名称`作为表单值提交，如果你要提交`地域编码`，使用下面的方法：
-```php
-$form->distpicker(['province_id', 'city_id', 'district_id'])->attribute('data-value-type', 'code');
 ```
 
 ### 表格筛选中使用
