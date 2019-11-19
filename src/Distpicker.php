@@ -41,7 +41,7 @@ class Distpicker extends Field
             $this->column = array_combine($this->columnKeys, $column);
         } else {
             $this->column      = array_combine($this->columnKeys, array_keys($column));
-            $this->placeholder = array_combine($this->columnKeys, $column);
+//            $this->placeholder = array_combine($this->columnKeys, $column);
         }
 
         $this->label = empty($arguments) ? '地区选择' : current($arguments);
