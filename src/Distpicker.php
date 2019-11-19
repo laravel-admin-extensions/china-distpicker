@@ -27,7 +27,7 @@ class Distpicker extends Field
     /**
      * @var array
      */
-    protected $placeholder = [];
+    protected $placeholder = '';
 
     /**
      * Distpicker constructor.
