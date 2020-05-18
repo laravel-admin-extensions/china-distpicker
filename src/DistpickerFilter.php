@@ -67,7 +67,7 @@ class DistpickerFilter extends AbstractFilter
             $this->column['district'] => Arr::get($inputs, $this->column['district']),
         ]);
 
-        if (!isset($value)) {
+        if ($value === []) {
             return;
         }
 
