@@ -101,6 +101,8 @@ $("#{$id}").distpicker({
 });
 EOT;
 
-        return parent::render()->with(compact('id'));
+// todo::这里有bug。
+        $this->id = $id;
+        return parent::render();
     }
 }
