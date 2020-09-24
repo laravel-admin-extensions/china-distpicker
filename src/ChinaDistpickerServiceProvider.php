@@ -3,8 +3,9 @@
 namespace Encore\ChinaDistpicker;
 
 use Encore\Admin\Admin;
+use Encore\Admin\Assets;
 use Encore\Admin\Form;
-use Encore\Admin\Grid\Filter;
+use Encore\Admin\Table\Filter;
 use Illuminate\Support\ServiceProvider;
 
 class ChinaDistpickerServiceProvider extends ServiceProvider
@@ -18,16 +19,12 @@ class ChinaDistpickerServiceProvider extends ServiceProvider
             return ;
         }
 
-        if ($views = $extension->views()) {
-            $this->loadViewsFrom($views, 'laravel-admin-china-distpicker');
-        }
+        $this->loadViewsFrom($extension->views(), 'laravel-admin-china-distpicker');
 
-        if ($this->app->runningInConsole() && $assets = $extension->assets()) {
-            $this->publishes(
-                [$assets => public_path('vendor/laravel-admin-ext/china-distpicker')],
-                'laravel-admin-china-distpicker'
-            );
-        }
+        Assets::define('distpicker', [
+            'deps' => 'jquery',
+            'js' => 'https://cdn.jsdelivr.net/npm/distpicker@2.0.6/dist/distpicker.min.js',
+        ]);
 
         Admin::booting(function () {
             Form::extend('distpicker', Distpicker::class);

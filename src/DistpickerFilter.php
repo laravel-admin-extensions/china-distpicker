@@ -3,7 +3,7 @@
 namespace Encore\ChinaDistpicker;
 
 use Encore\Admin\Admin;
-use Encore\Admin\Grid\Filter\AbstractFilter;
+use Encore\Admin\Table\Filter\AbstractFilter;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
@@ -114,11 +114,13 @@ class DistpickerFilter extends AbstractFilter
         return $columns;
     }
 
-    /**
+    /**Table
      * Setup js scripts.
      */
     protected function setupScript()
     {
+        admin_assets_require('distpicker');
+
         $province = old($this->column['province'], Arr::get($this->value, $this->column['province']));
         $city     = old($this->column['city'], Arr::get($this->value, $this->column['city']));
         $district = old($this->column['district'], Arr::get($this->value, $this->column['district']));

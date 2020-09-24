@@ -1,23 +1,24 @@
-<div class="{{$viewClass['form-group']}} {!! !$errors->hasAny($errorKey) ? '' : 'has-error' !!}">
+<div {!! admin_attrs($group_attrs) !!}>
 
     <label for="{{$id}}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
 
     <div class="{{$viewClass['field']}} form-inline">
-
-        @foreach($errorKey as $key => $col)
-            @if($errors->has($col))
-                @foreach($errors->get($col) as $message)
-                    <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{$message}}</label><br/>
-                @endforeach
-            @endif
-        @endforeach
 
         <div id="{{ $id }}" {!! $attributes !!}>
             <select class="form-control" name="{{$name['province']}}"></select>&nbsp;
             <select class="form-control" name="{{$name['city']}}"></select>&nbsp;
             <select class="form-control" name="{{$name['district']}}"></select>&nbsp;
         </div>
+        @include('admin::form.error')
         @include('admin::form.help-block')
 
     </div>
 </div>
+
+<script require="distpicker">
+    $("#{{ $id }}").distpicker({
+        province: '{{ $province }}',
+        city: '{{ $city }}',
+        district: '{{ $district }}'
+    });
+</script>

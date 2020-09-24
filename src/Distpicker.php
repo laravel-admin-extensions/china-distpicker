@@ -15,13 +15,6 @@ class Distpicker extends Field
     /**
      * @var array
      */
-    protected static $js = [
-        'vendor/laravel-admin-ext/china-distpicker/dist/distpicker.min.js'
-    ];
-
-    /**
-     * @var array
-     */
     protected $columnKeys = ['province', 'city', 'district'];
 
     /**
@@ -87,22 +80,14 @@ class Distpicker extends Field
     {
         $this->attribute('data-value-type', 'code');
 
-        $province = old($this->column['province'], Arr::get($this->value(), 'province')) ?: Arr::get($this->placeholder, 'province');
-        $city     = old($this->column['city'],     Arr::get($this->value(), 'city'))     ?: Arr::get($this->placeholder, 'city');
-        $district = old($this->column['district'], Arr::get($this->value(), 'district')) ?: Arr::get($this->placeholder, 'district');
+        $this->id = uniqid('distpicker-');
 
-        $id = uniqid('distpicker-');
+        $this->addVariables([
+            'province' => Arr::get($this->value(), 'province') ?: Arr::get($this->placeholder, 'province'),
+            'city'     => Arr::get($this->value(), 'city')     ?: Arr::get($this->placeholder, 'city'),
+            'district' => Arr::get($this->value(), 'district') ?: Arr::get($this->placeholder, 'district'),
+        ]);
 
-        $this->script = <<<EOT
-$("#{$id}").distpicker({
-  province: '$province',
-  city: '$city',
-  district: '$district'
-});
-EOT;
-
-// todo::这里有bug。
-        $this->id = $id;
         return parent::render();
     }
 }

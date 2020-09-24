@@ -2,7 +2,7 @@
 
 namespace Encore\ChinaDistpicker;
 
-use Encore\Admin\Grid\Filter\Presenter\Presenter;
+use Encore\Admin\Table\Filter\Presenter\Presenter;
 
 class FilterPresenter extends Presenter
 {
