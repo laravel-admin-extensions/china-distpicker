@@ -1,14 +1,27 @@
-/*!
- * Distpicker v2.0.4
- * https://fengyuanchen.github.io/distpicker
- *
- * Copyright 2014-present Chen Fengyuan
- * Released under the MIT license
- *
- * Date: 2018-06-01T12:33:03.031Z
- */
-
+/*! Distpicker v2.0.7 | (c) 2014-present Chen Fengyuan | MIT */
 import $ from 'jquery';
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
 
 var DEFAULTS = {
   // Selects the districts automatically.
@@ -17,19 +30,14 @@ var DEFAULTS = {
   // 2 -> Autoselect province and city only
   // 3 -> Autoselect all (province, city and district)
   autoselect: 0,
-
   // Show placeholder.
   placeholder: true,
-
   // Select value. Options: 'name' and 'code'
   valueType: 'name',
-
   // Defines the initial value of province.
   province: '—— 省 ——',
-
   // Defines the initial value of city.
   city: '—— 市 ——',
-
   // Defines the initial value of district.
   district: '—— 区 ——'
 };
@@ -158,13 +166,13 @@ var DISTRICTS = {
     130207: '丰南区',
     130208: '丰润区',
     130209: '曹妃甸区',
-    130223: '滦县',
     130224: '滦南县',
     130225: '乐亭县',
     130227: '迁西县',
     130229: '玉田县',
     130281: '遵化市',
-    130283: '迁安市'
+    130283: '迁安市',
+    130284: '滦州市'
   },
   130300: {
     130302: '海港区',
@@ -196,15 +204,14 @@ var DISTRICTS = {
     130481: '武安市'
   },
   130500: {
-    130502: '桥东区',
-    130503: '桥西区',
-    130521: '邢台县',
+    130502: '襄都区',
+    130503: '信都区',
+    130505: '任泽区',
+    130506: '南和区',
     130522: '临城县',
     130523: '内丘县',
     130524: '柏乡县',
     130525: '隆尧县',
-    130526: '任县',
-    130527: '南和县',
     130528: '宁晋县',
     130529: '巨鹿县',
     130530: '新河县',
@@ -213,6 +220,7 @@ var DISTRICTS = {
     130533: '威县',
     130534: '清河县',
     130535: '临西县',
+    130571: '河北邢台经济开发区',
     130581: '南宫市',
     130582: '沙河市'
   },
@@ -342,17 +350,16 @@ var DISTRICTS = {
     140181: '古交市'
   },
   140200: {
-    140202: '城区',
-    140203: '矿区',
-    140211: '南郊区',
     140212: '新荣区',
+    140213: '平城区',
+    140214: '云冈区',
+    140215: '云州区',
     140221: '阳高县',
     140222: '天镇县',
     140223: '广灵县',
     140224: '灵丘县',
     140225: '浑源县',
-    140226: '左云县',
-    140227: '大同县'
+    140226: '左云县'
   },
   140300: {
     140302: '城区',
@@ -362,19 +369,18 @@ var DISTRICTS = {
     140322: '盂县'
   },
   140400: {
-    140402: '城区',
-    140411: '郊区',
-    140421: '长治县',
+    140403: '潞州区',
+    140404: '上党区',
+    140405: '屯留区',
+    140406: '潞城区',
     140423: '襄垣县',
-    140424: '屯留县',
     140425: '平顺县',
     140426: '黎城县',
     140427: '壶关县',
     140428: '长子县',
     140429: '武乡县',
     140430: '沁县',
-    140431: '沁源县',
-    140481: '潞城市'
+    140431: '沁源县'
   },
   140500: {
     140502: '城区',
@@ -390,16 +396,16 @@ var DISTRICTS = {
     140621: '山阴县',
     140622: '应县',
     140623: '右玉县',
-    140624: '怀仁县'
+    140681: '怀仁市'
   },
   140700: {
     140702: '榆次区',
+    140703: '太谷区',
     140721: '榆社县',
     140722: '左权县',
     140723: '和顺县',
     140724: '昔阳县',
     140725: '寿阳县',
-    140726: '太谷县',
     140727: '祁县',
     140728: '平遥县',
     140729: '灵石县',
@@ -776,7 +782,8 @@ var DISTRICTS = {
     220113: '九台区',
     220122: '农安县',
     220182: '榆树市',
-    220183: '德惠市'
+    220183: '德惠市',
+    220184: '公主岭市'
   },
   220200: {
     220202: '昌邑区',
@@ -794,7 +801,6 @@ var DISTRICTS = {
     220303: '铁东区',
     220322: '梨树县',
     220323: '伊通满族自治县',
-    220381: '公主岭市',
     220382: '双辽市'
   },
   220400: {
@@ -940,22 +946,15 @@ var DISTRICTS = {
     230624: '杜尔伯特蒙古族自治县'
   },
   230700: {
-    230702: '伊春区',
-    230703: '南岔区',
-    230704: '友好区',
-    230705: '西林区',
-    230706: '翠峦区',
-    230707: '新青区',
-    230708: '美溪区',
-    230709: '金山屯区',
-    230710: '五营区',
-    230711: '乌马河区',
-    230712: '汤旺河区',
-    230713: '带岭区',
-    230714: '乌伊岭区',
-    230715: '红星区',
-    230716: '上甘岭区',
+    230717: '伊美区',
+    230718: '乌翠区',
+    230719: '友好区',
     230722: '嘉荫县',
+    230723: '汤旺县',
+    230724: '丰林县',
+    230725: '大箐山县',
+    230726: '南岔县',
+    230751: '金林区',
     230781: '铁力市'
   },
   230800: {
@@ -990,11 +989,11 @@ var DISTRICTS = {
   },
   231100: {
     231102: '爱辉区',
-    231121: '嫩江县',
     231123: '逊克县',
     231124: '孙吴县',
     231181: '北安市',
-    231182: '五大连池市'
+    231182: '五大连池市',
+    231183: '嫩江市'
   },
   231200: {
     231202: '北林区',
@@ -1009,10 +1008,10 @@ var DISTRICTS = {
     231283: '海伦市'
   },
   232700: {
-    232701: '加格达奇区',
+    232701: '漠河市',
+    232718: '加格达奇区',
     232721: '呼玛县',
-    232722: '塔河县',
-    232723: '漠河县'
+    232722: '塔河县'
   },
   310000: {
     310100: '上海城区'
@@ -1098,6 +1097,7 @@ var DISTRICTS = {
     320507: '相城区',
     320508: '姑苏区',
     320509: '吴江区',
+    320571: '苏州工业园区',
     320581: '常熟市',
     320582: '张家港市',
     320583: '昆山市',
@@ -1105,13 +1105,12 @@ var DISTRICTS = {
   },
   320600: {
     320602: '崇川区',
-    320611: '港闸区',
     320612: '通州区',
-    320621: '海安县',
     320623: '如东县',
     320681: '启东市',
     320682: '如皋市',
-    320684: '海门市'
+    320684: '海门区',
+    320685: '海安市'
   },
   320700: {
     320703: '连云区',
@@ -1223,7 +1222,8 @@ var DISTRICTS = {
     330328: '文成县',
     330329: '泰顺县',
     330381: '瑞安市',
-    330382: '乐清市'
+    330382: '乐清市',
+    330383: '龙港市'
   },
   330400: {
     330402: '南湖区',
@@ -1329,11 +1329,10 @@ var DISTRICTS = {
     340202: '镜湖区',
     340203: '弋江区',
     340207: '鸠江区',
-    340208: '三山区',
-    340221: '芜湖县',
-    340222: '繁昌县',
+    340221: '湾沚区',
+    340222: '繁昌区',
     340223: '南陵县',
-    340225: '无为县'
+    340281: '无为市'
   },
   340300: {
     340302: '龙子湖区',
@@ -1378,12 +1377,12 @@ var DISTRICTS = {
     340803: '大观区',
     340811: '宜秀区',
     340822: '怀宁县',
-    340824: '潜山县',
     340825: '太湖县',
     340826: '宿松县',
     340827: '望江县',
     340828: '岳西县',
-    340881: '桐城市'
+    340881: '桐城市',
+    340882: '潜山市'
   },
   341000: {
     341002: '屯溪区',
@@ -1445,11 +1444,11 @@ var DISTRICTS = {
   341800: {
     341802: '宣州区',
     341821: '郎溪县',
-    341822: '广德县',
     341823: '泾县',
     341824: '绩溪县',
     341825: '旌德县',
-    341881: '宁国市'
+    341881: '宁国市',
+    341882: '广德市'
   },
   350000: {
     350100: '福州市',
@@ -1582,9 +1581,9 @@ var DISTRICTS = {
     360102: '东湖区',
     360103: '西湖区',
     360104: '青云谱区',
-    360105: '湾里区',
     360111: '青山湖区',
     360112: '新建区',
+    360113: '红谷滩区',
     360121: '南昌县',
     360123: '安义县',
     360124: '进贤县'
@@ -1623,7 +1622,7 @@ var DISTRICTS = {
   },
   360600: {
     360602: '月湖区',
-    360622: '余江县',
+    360603: '余江区',
     360681: '贵溪市'
   },
   360700: {
@@ -1635,7 +1634,6 @@ var DISTRICTS = {
     360724: '上犹县',
     360725: '崇义县',
     360726: '安远县',
-    360727: '龙南县',
     360728: '定南县',
     360729: '全南县',
     360730: '宁都县',
@@ -1644,7 +1642,8 @@ var DISTRICTS = {
     360733: '会昌县',
     360734: '寻乌县',
     360735: '石城县',
-    360781: '瑞金市'
+    360781: '瑞金市',
+    360783: '龙南市'
   },
   360800: {
     360802: '吉州区',
@@ -1689,7 +1688,7 @@ var DISTRICTS = {
   361100: {
     361102: '信州区',
     361103: '广丰区',
-    361121: '广信区',
+    361104: '广信区',
     361123: '玉山县',
     361124: '铅山县',
     361125: '横峰县',
@@ -1712,7 +1711,6 @@ var DISTRICTS = {
     370900: '泰安市',
     371000: '威海市',
     371100: '日照市',
-    371200: '莱芜市',
     371300: '临沂市',
     371400: '德州市',
     371500: '聊城市',
@@ -1727,8 +1725,10 @@ var DISTRICTS = {
     370112: '历城区',
     370113: '长清区',
     370114: '章丘区',
+    370115: '济阳区',
+    370116: '莱芜区',
+    370117: '钢城区',
     370124: '平阴县',
-    370125: '济阳县',
     370126: '商河县'
   },
   370200: {
@@ -1773,11 +1773,10 @@ var DISTRICTS = {
     370611: '福山区',
     370612: '牟平区',
     370613: '莱山区',
-    370634: '长岛县',
+    370614: '蓬莱区',
     370681: '龙口市',
     370682: '莱阳市',
     370683: '莱州市',
-    370684: '蓬莱市',
     370685: '招远市',
     370686: '栖霞市',
     370687: '海阳市'
@@ -1829,10 +1828,6 @@ var DISTRICTS = {
     371121: '五莲县',
     371122: '莒县'
   },
-  371200: {
-    371202: '莱城区',
-    371203: '钢城区'
-  },
   371300: {
     371302: '兰山区',
     371311: '罗庄区',
@@ -1862,9 +1857,9 @@ var DISTRICTS = {
   },
   371500: {
     371502: '东昌府区',
+    371503: '茌平区',
     371521: '阳谷县',
     371522: '莘县',
-    371523: '茌平县',
     371524: '东阿县',
     371525: '冠县',
     371526: '高唐县',
@@ -1877,7 +1872,7 @@ var DISTRICTS = {
     371622: '阳信县',
     371623: '无棣县',
     371625: '博兴县',
-    371626: '邹平县'
+    371681: '邹平市'
   },
   371700: {
     371702: '牡丹区',
@@ -1992,9 +1987,9 @@ var DISTRICTS = {
     410725: '原阳县',
     410726: '延津县',
     410727: '封丘县',
-    410728: '长垣县',
     410781: '卫辉市',
-    410782: '辉县市'
+    410782: '辉县市',
+    410783: '长垣市'
   },
   410800: {
     410802: '解放区',
@@ -2079,12 +2074,12 @@ var DISTRICTS = {
   },
   411600: {
     411602: '川汇区',
+    411603: '淮阳区',
     411621: '扶沟县',
     411622: '西华县',
     411623: '商水县',
     411624: '沈丘县',
     411625: '郸城县',
-    411626: '淮阳县',
     411627: '太康县',
     411628: '鹿邑县',
     411681: '项城市'
@@ -2190,9 +2185,9 @@ var DISTRICTS = {
   420800: {
     420802: '东宝区',
     420804: '掇刀区',
-    420821: '京山县',
     420822: '沙洋县',
-    420881: '钟祥市'
+    420881: '钟祥市',
+    420882: '京山市'
   },
   420900: {
     420902: '孝南区',
@@ -2207,7 +2202,7 @@ var DISTRICTS = {
     421002: '沙市区',
     421003: '荆州区',
     421022: '公安县',
-    421023: '监利县',
+    421023: '监利市',
     421024: '江陵县',
     421081: '石首市',
     421083: '洪湖市',
@@ -2292,7 +2287,7 @@ var DISTRICTS = {
     430203: '芦淞区',
     430204: '石峰区',
     430211: '天元区',
-    430221: '株洲县',
+    430212: '渌口区',
     430223: '攸县',
     430224: '茶陵县',
     430225: '炎陵县',
@@ -2323,7 +2318,6 @@ var DISTRICTS = {
     430502: '双清区',
     430503: '大祥区',
     430511: '北塔区',
-    430521: '邵东县',
     430522: '新邵县',
     430523: '邵阳县',
     430524: '隆回县',
@@ -2331,7 +2325,8 @@ var DISTRICTS = {
     430527: '绥宁县',
     430528: '新宁县',
     430529: '城步苗族自治县',
-    430581: '武冈市'
+    430581: '武冈市',
+    430582: '邵东市'
   },
   430600: {
     430602: '岳阳楼区',
@@ -2445,7 +2440,6 @@ var DISTRICTS = {
     441800: '清远市',
     441900: '东莞市',
     442000: '中山市',
-    442100: '东沙群岛',
     445100: '潮州市',
     445200: '揭阳市',
     445300: '云浮市'
@@ -2483,13 +2477,13 @@ var DISTRICTS = {
     440307: '龙岗区',
     440308: '盐田区',
     440309: '龙华区',
-    440310: '坪山区'
+    440310: '坪山区',
+    440311: '光明区'
   },
   440400: {
     440402: '香洲区',
     440403: '斗门区',
-    440404: '金湾区',
-    440499: '澳门大学横琴校区(由澳门管辖)'
+    440404: '金湾区'
   },
   440500: {
     440507: '龙湖区',
@@ -2597,9 +2591,6 @@ var DISTRICTS = {
   442000: {
     442000: '中山市'
   },
-  442100: {
-    442100: '东沙群岛'
-  },
   445100: {
     445102: '湘桥区',
     445103: '潮安区',
@@ -2677,8 +2668,8 @@ var DISTRICTS = {
     450328: '龙胜各族自治县',
     450329: '资源县',
     450330: '平乐县',
-    450331: '荔浦县',
-    450332: '恭城瑶族自治县'
+    450332: '恭城瑶族自治县',
+    450381: '荔浦市'
   },
   450400: {
     450403: '万秀区',
@@ -2725,9 +2716,8 @@ var DISTRICTS = {
   },
   451000: {
     451002: '右江区',
-    451021: '田阳区',
+    451003: '田阳区',
     451022: '田东县',
-    451023: '平果县',
     451024: '德保县',
     451026: '那坡县',
     451027: '凌云县',
@@ -2735,7 +2725,8 @@ var DISTRICTS = {
     451029: '田林县',
     451030: '西林县',
     451031: '隆林各族自治县',
-    451081: '靖西市'
+    451081: '靖西市',
+    451082: '平果市'
   },
   451100: {
     451102: '八步区',
@@ -2808,9 +2799,8 @@ var DISTRICTS = {
     460205: '崖州区'
   },
   460300: {
-    460321: '西沙群岛',
-    460322: '南沙群岛',
-    460323: '中沙群岛的岛礁及其海域'
+    460301: '西沙区',
+    460302: '南沙区'
   },
   460400: {
     460400: '儋州市'
@@ -2941,10 +2931,10 @@ var DISTRICTS = {
     510115: '温江区',
     510116: '双流区',
     510117: '郫都区',
+    510118: '新津区',
     510121: '金堂县',
     510129: '大邑县',
     510131: '蒲江县',
-    510132: '新津县',
     510181: '都江堰市',
     510182: '彭州市',
     510183: '邛崃市',
@@ -2977,8 +2967,8 @@ var DISTRICTS = {
   },
   510600: {
     510603: '旌阳区',
+    510604: '罗江区',
     510623: '中江县',
-    510626: '罗江区',
     510681: '广汉市',
     510682: '什邡市',
     510683: '绵竹市'
@@ -3007,8 +2997,8 @@ var DISTRICTS = {
     510903: '船山区',
     510904: '安居区',
     510921: '蓬溪县',
-    510922: '射洪县',
-    510923: '大英县'
+    510923: '大英县',
+    510981: '射洪市'
   },
   511000: {
     511002: '市中区',
@@ -3052,7 +3042,7 @@ var DISTRICTS = {
   511500: {
     511502: '翠屏区',
     511503: '南溪区',
-    511521: '宜宾县',
+    511504: '叙州区',
     511523: '江安县',
     511524: '长宁县',
     511525: '高县',
@@ -3106,7 +3096,7 @@ var DISTRICTS = {
     513222: '理县',
     513223: '茂县',
     513224: '松潘县',
-    513225: '九寨沟市',
+    513225: '九寨沟县',
     513226: '金川县',
     513227: '小金县',
     513228: '黑水县',
@@ -3180,7 +3170,7 @@ var DISTRICTS = {
   520200: {
     520201: '钟山区',
     520203: '六枝特区',
-    520221: '水城县',
+    520221: '水城区',
     520281: '盘州市'
   },
   520300: {
@@ -3231,7 +3221,7 @@ var DISTRICTS = {
   },
   522300: {
     522301: '兴义市',
-    522322: '兴仁县',
+    522302: '兴仁市',
     522323: '普安县',
     522324: '晴隆县',
     522325: '贞丰县',
@@ -3308,7 +3298,7 @@ var DISTRICTS = {
   530300: {
     530302: '麒麟区',
     530303: '沾益区',
-    530321: '马龙县',
+    530304: '马龙区',
     530322: '陆良县',
     530323: '师宗县',
     530324: '罗平县',
@@ -3319,13 +3309,13 @@ var DISTRICTS = {
   530400: {
     530402: '红塔区',
     530403: '江川区',
-    530422: '澄江县',
     530423: '通海县',
     530424: '华宁县',
     530425: '易门县',
     530426: '峨山彝族自治县',
     530427: '新平彝族傣族自治县',
-    530428: '元江哈尼族彝族傣族自治县'
+    530428: '元江哈尼族彝族傣族自治县',
+    530481: '澄江市'
   },
   530500: {
     530502: '隆阳区',
@@ -3345,7 +3335,7 @@ var DISTRICTS = {
     530627: '镇雄县',
     530628: '彝良县',
     530629: '威信县',
-    530630: '水富县'
+    530681: '水富市'
   },
   530700: {
     530702: '古城区',
@@ -3603,12 +3593,12 @@ var DISTRICTS = {
     610424: '乾县',
     610425: '礼泉县',
     610426: '永寿县',
-    610427: '彬县',
     610428: '长武县',
     610429: '旬邑县',
     610430: '淳化县',
     610431: '武功县',
-    610481: '兴平市'
+    610481: '兴平市',
+    610482: '彬州市'
   },
   610500: {
     610502: '临渭区',
@@ -3628,7 +3618,6 @@ var DISTRICTS = {
     610603: '安塞区',
     610621: '延长县',
     610622: '延川县',
-    610623: '子长县',
     610625: '志丹县',
     610626: '吴起县',
     610627: '甘泉县',
@@ -3636,7 +3625,8 @@ var DISTRICTS = {
     610629: '洛川县',
     610630: '宜川县',
     610631: '黄龙县',
-    610632: '黄陵县'
+    610632: '黄陵县',
+    610681: '子长市'
   },
   610700: {
     610702: '汉台区',
@@ -3754,9 +3744,9 @@ var DISTRICTS = {
     620821: '泾川县',
     620822: '灵台县',
     620823: '崇信县',
-    620824: '华亭县',
     620825: '庄浪县',
-    620826: '静宁县'
+    620826: '静宁县',
+    620881: '华亭市'
   },
   620900: {
     620902: '肃州区',
@@ -3832,8 +3822,8 @@ var DISTRICTS = {
     630103: '城中区',
     630104: '城西区',
     630105: '城北区',
+    630106: '湟中区',
     630121: '大通回族土族自治县',
-    630122: '湟中县',
     630123: '湟源县'
   },
   630200: {
@@ -3851,7 +3841,7 @@ var DISTRICTS = {
     632224: '刚察县'
   },
   632300: {
-    632321: '同仁县',
+    632301: '同仁市',
     632322: '尖扎县',
     632323: '泽库县',
     632324: '河南蒙古族自治县'
@@ -3882,6 +3872,7 @@ var DISTRICTS = {
   632800: {
     632801: '格尔木市',
     632802: '德令哈市',
+    632803: '茫崖市',
     632821: '乌兰县',
     632822: '都兰县',
     632823: '天峻县',
@@ -3949,7 +3940,8 @@ var DISTRICTS = {
     659006: '铁门关市',
     659007: '双河市',
     659008: '可克达拉市',
-    659009: '昆玉市'
+    659009: '昆玉市',
+    659010: '胡杨河市'
   },
   650100: {
     650102: '天山区',
@@ -4005,8 +3997,8 @@ var DISTRICTS = {
   },
   652900: {
     652901: '阿克苏市',
+    652902: '库车市',
     652922: '温宿县',
-    652923: '库车县',
     652924: '沙雅县',
     652925: '新和县',
     652926: '拜城县',
@@ -4102,6 +4094,9 @@ var DISTRICTS = {
   659009: {
     659009: '昆玉市'
   },
+  659010: {
+    659010: '胡杨河市'
+  },
   810000: {
     810100: '香港城区'
   },
@@ -4144,16 +4139,12 @@ var WINDOW = typeof window !== 'undefined' ? window : {};
 var NAMESPACE = 'distpicker';
 var EVENT_CHANGE = 'change';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var DEFAULT_CODE = 100000;
 var PROVINCE = 'province';
 var CITY = 'city';
 var DISTRICT = 'district';
 
-var Distpicker = function () {
+var Distpicker = /*#__PURE__*/function () {
   function Distpicker(element, options) {
     _classCallCheck(this, Distpicker);
 
@@ -4165,56 +4156,51 @@ var Distpicker = function () {
   }
 
   _createClass(Distpicker, [{
-    key: 'init',
+    key: "init",
     value: function init() {
       var _this = this;
 
       var options = this.options;
-
       var $selects = this.$element.find('select');
       var length = $selects.length;
-
       var data = {};
-
       $selects.each(function (i, select) {
         return $.extend(data, $(select).data());
       });
-
       $.each([PROVINCE, CITY, DISTRICT], function (i, type) {
         if (data[type]) {
           options[type] = data[type];
-          _this['$' + type] = $selects.filter('[data-' + type + ']');
+          _this["$".concat(type)] = $selects.filter("[data-".concat(type, "]"));
         } else {
-          _this['$' + type] = length > i ? $selects.eq(i) : null;
+          _this["$".concat(type)] = length > i ? $selects.eq(i) : null;
         }
       });
+      this.bind(); // Reset all the selects (after event binding)
 
-      this.bind();
-
-      // Reset all the selects (after event binding)
       this.reset();
       this.ready = true;
     }
   }, {
-    key: 'bind',
+    key: "bind",
     value: function bind() {
       var _this2 = this;
 
       if (this.$province) {
         this.$province.on(EVENT_CHANGE, this.onChangeProvince = $.proxy(function () {
           _this2.output(CITY);
-          _this2.output(DISTRICT);
+
+          _this2.output(DISTRICT, true);
         }, this));
       }
 
       if (this.$city) {
         this.$city.on(EVENT_CHANGE, this.onChangeCity = $.proxy(function () {
-          return _this2.output(DISTRICT);
+          return _this2.output(DISTRICT, true);
         }, this));
       }
     }
   }, {
-    key: 'unbind',
+    key: "unbind",
     value: function unbind() {
       if (this.$province) {
         this.$province.off(EVENT_CHANGE, this.onChangeProvince);
@@ -4225,18 +4211,18 @@ var Distpicker = function () {
       }
     }
   }, {
-    key: 'output',
+    key: "output",
     value: function output(type) {
+      var triggerEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var options = this.options,
           placeholders = this.placeholders;
-
-      var $select = this['$' + type];
+      var $select = this["$".concat(type)];
 
       if (!$select || !$select.length) {
         return;
       }
 
-      var code = void 0;
+      var code;
 
       switch (type) {
         case PROVINCE:
@@ -4259,21 +4245,17 @@ var Distpicker = function () {
 
       if ($.isPlainObject(districts)) {
         $.each(districts, function (i, name) {
-          var selected = name === value;
-
-          if (options.valueType === 'code') {
-            selected = i === String(value);
-          }
+          var selected = name === value || i === String(value);
 
           if (selected) {
             matched = true;
           }
 
           data.push({
-            code: i,
             name: name,
-            value: options.valueType === 'name' ? name : i,
-            selected: selected
+            selected: selected,
+            code: i,
+            value: options.valueType === 'name' ? name : i
           });
         });
       }
@@ -4283,15 +4265,15 @@ var Distpicker = function () {
 
         if (data.length && (type === PROVINCE && autoselect > 0 || type === CITY && autoselect > 1 || type === DISTRICT && autoselect > 2)) {
           data[0].selected = true;
-        }
+        } // Save the unmatched value as a placeholder at the first output
 
-        // Save the unmatched value as a placeholder at the first output
+
         if (!this.ready && value) {
           placeholders[type] = value;
         }
-      }
+      } // Add placeholder option
 
-      // Add placeholder option
+
       if (options.placeholder) {
         data.unshift({
           code: '',
@@ -4307,40 +4289,35 @@ var Distpicker = function () {
         $select.empty();
       }
 
-      $select.trigger(EVENT_CHANGE);
-    }
-
-    // eslint-disable-next-line class-methods-use-this
+      if (triggerEvent) {
+        $select.trigger(EVENT_CHANGE);
+      }
+    } // eslint-disable-next-line class-methods-use-this
 
   }, {
-    key: 'getList',
+    key: "getList",
     value: function getList(data) {
       var list = [];
-
       $.each(data, function (i, n) {
-        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + n.value + '"'];
+        var attrs = ["data-code=\"".concat(n.code, "\""), "data-text=\"".concat(n.name, "\""), "value=\"".concat(n.value, "\"")];
 
         if (n.selected) {
           attrs.push('selected');
         }
 
-        list.push('<option ' + attrs.join(' ') + '>' + n.name + '</option>');
+        list.push("<option ".concat(attrs.join(' '), ">").concat(n.name, "</option>"));
       });
-
       return list.join('');
-    }
-
-    // eslint-disable-next-line class-methods-use-this
+    } // eslint-disable-next-line class-methods-use-this
 
   }, {
-    key: 'getDistricts',
+    key: "getDistricts",
     value: function getDistricts() {
       var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_CODE;
-
       return DISTRICTS[code] || null;
     }
   }, {
-    key: 'reset',
+    key: "reset",
     value: function reset(deep) {
       if (!deep) {
         this.output(PROVINCE);
@@ -4351,12 +4328,12 @@ var Distpicker = function () {
       }
     }
   }, {
-    key: 'destroy',
+    key: "destroy",
     value: function destroy() {
       this.unbind();
     }
   }], [{
-    key: 'setDefaults',
+    key: "setDefaults",
     value: function setDefaults(options) {
       $.extend(DEFAULTS, $.isPlainObject(options) && options);
     }
@@ -4369,12 +4346,11 @@ if ($.fn) {
   var AnotherDistpicker = $.fn.distpicker;
 
   $.fn.distpicker = function jQueryDistpicker(option) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
     }
 
-    var result = void 0;
-
+    var result;
     this.each(function (i, element) {
       var $element = $(element);
       var isDestroy = option === 'destroy';
@@ -4386,7 +4362,6 @@ if ($.fn) {
         }
 
         var options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
-
         distpicker = new Distpicker(element, options);
         $element.data(NAMESPACE, distpicker);
       }
@@ -4403,7 +4378,6 @@ if ($.fn) {
         }
       }
     });
-
     return typeof result === 'undefined' ? this : result;
   };
 
@@ -4418,6 +4392,6 @@ if ($.fn) {
 
 if (WINDOW.document) {
   $(function () {
-    $('[data-toggle="' + NAMESPACE + '"]').distpicker();
+    $("[data-toggle=\"".concat(NAMESPACE, "\"]")).distpicker();
   });
 }
