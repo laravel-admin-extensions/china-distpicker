@@ -45,6 +45,8 @@ class Distpicker extends Field
         }
 
         $this->label = empty($arguments) ? '地区选择' : current($arguments);
+        
+        $this->attribute('data-value-type', 'code');
     }
 
     public function getValidator(array $input)
@@ -85,8 +87,6 @@ class Distpicker extends Field
      */
     public function render()
     {
-        $this->attribute('data-value-type', 'code');
-
         $province = old($this->column['province'], Arr::get($this->value(), 'province')) ?: Arr::get($this->placeholder, 'province');
         $city     = old($this->column['city'],     Arr::get($this->value(), 'city'))     ?: Arr::get($this->placeholder, 'city');
         $district = old($this->column['district'], Arr::get($this->value(), 'district')) ?: Arr::get($this->placeholder, 'district');

@@ -1,5 +1,5 @@
 {
-    "name": "laravel-admin-ext/china-distpicker",
+    "name": "tudouer/china-distpicker",
     "description": "Distpicker extension for laravel-admin",
     "type": "library",
     "keywords": ["laravel-admin", "extension", "distpicker"],
